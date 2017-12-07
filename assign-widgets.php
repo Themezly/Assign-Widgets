@@ -8,7 +8,7 @@ Plugin URI: https://github.com/Themezly/Assign-Widgets
 Description: Assign widgets to selected pages or create widget areas
 Author: Themezly
 Author URI: http://themezly.com
-Version: 1.0.0
+Version: 1.0.1
 License: GNU/GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
 */
