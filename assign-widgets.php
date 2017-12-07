@@ -598,8 +598,6 @@ class ThzAssignWidgets{
 		}
 				
 		
-
-	
 		if ( is_category() ) {
 			
 			$data['type']     = 'tx';
@@ -613,7 +611,19 @@ class ThzAssignWidgets{
 			}
 			
 		}
-	
+
+		if ( is_archive() && ! is_tax() ) {
+			
+			$data['type']     = 'ar';
+			$data['sub_type'] = get_post_type();
+			$data['slug']	  = $data['type'].'_'.$data['sub_type'];
+			$data['setby']	  = 'is_archive()';
+			
+			if(in_array($data['slug'],$assigned_pages)){			
+				return $data;
+			}
+		}
+		
 		if ( is_tax() ) {
 			$data['type']     ='tx';
 			$data['sub_type'] = $data['type'].'_'.get_queried_object()->taxonomy;
@@ -689,19 +699,7 @@ class ThzAssignWidgets{
 				return $data;
 			}
 		}
-		
-		
-		if ( is_archive() ) {
-			
-			$data['type']     = 'ar';
-			$data['sub_type'] = get_post_type();
-			$data['slug']	  = $data['type'].'_'.$data['sub_type'];
-			$data['setby']	  = 'is_archive()';
-			
-			if(in_array($data['slug'],$assigned_pages)){			
-				return $data;
-			}
-		}
+
 
 		if ( $this->is_thz_post_type() ){
 			
