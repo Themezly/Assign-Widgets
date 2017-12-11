@@ -8,7 +8,7 @@ Plugin URI: https://github.com/Themezly/Assign-Widgets
 Description: Assign widgets to selected pages or create widget areas
 Author: Themezly
 Author URI: http://themezly.com
-Version: 1.0.2
+Version: 1.0.3
 License: GNU/GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
 */
@@ -642,7 +642,7 @@ class ThzAssignWidgets{
 			$data['slug']	  = 'is_tag';
 			$data['setby']	  = 'is_tag()';
 	
-			if($data['slug'] == $assigned_page || $show_info){			
+			if(in_array($data['slug'],$assigned_pages)){		
 				return $data;
 			}
 		}
