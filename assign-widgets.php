@@ -8,7 +8,7 @@ Plugin URI: https://github.com/Themezly/Assign-Widgets
 Description: Assign widgets to selected pages or create widget areas
 Author: Themezly
 Author URI: http://themezly.com
-Version: 1.0.1
+Version: 1.0.2
 License: GNU/GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
 */
@@ -221,9 +221,11 @@ class ThzAssignWidgets{
 			'is_front_page' => __('Front Page', 'assign-widgets'),
 			'is_home' => __('Blog Home Page', 'assign-widgets'),
 			'is_postspage' => __('Posts page', 'assign-widgets'),
+			'is_attachment' => esc_html__('Attachment Page', 'assign-widgets'),
 			'is_search' => __('Search Page', 'assign-widgets'),
 			'is_404' => __('404 Page', 'assign-widgets'),
-			'is_author' => __('Author Page', 'assign-widgets'),
+			'is_author' => __('Author Archive', 'assign-widgets'),
+			'is_tag' => esc_html__('Tags Archive', 'assign-widgets'),
 		);
 		
 		if(function_exists('bp_is_my_profile')){
@@ -506,7 +508,7 @@ class ThzAssignWidgets{
 				
 		$data =  array();
 
-		if(is_user_logged_in()){
+		if( is_user_logged_in() ){
 			
 			$data['type']     = 'is_logged_in';
 			$data['sub_type'] = 'is_logged_in';
@@ -520,7 +522,7 @@ class ThzAssignWidgets{
 		}
 		
 		
-		if($this->thz_aw_is_logged_out()){
+		if( $this->thz_aw_is_logged_out() ){
 			
 			$data['type']     = 'is_logged_out';
 			$data['sub_type'] = 'is_logged_out';
@@ -547,7 +549,7 @@ class ThzAssignWidgets{
 			
 		}
 		
-		if($this->thz_aw_is_desktop()){
+		if( $this->thz_aw_is_desktop() ){
 			
 			$data['type']     = 'is_desktop';
 			$data['sub_type'] = 'is_desktop';
@@ -597,7 +599,29 @@ class ThzAssignWidgets{
 			}
 		}
 				
+		if ( is_attachment() ) {
+			
+			$data['type']     = 'is_attachment';
+			$data['slug']	  = 'is_attachment';
+			$data['setby']	  = 'is_attachment()';
+			
+			if(in_array($data['slug'],$assigned_pages)){			
+				return $data;
+			}
+		}				
+
+		if ( is_author() ) {
+			
+			$data['type']     = 'is_author';
+			$data['slug']	  = 'is_author';
+			$data['setby']	  = 'is_author()';
+			
+			if(in_array($data['slug'],$assigned_pages)){			
+				return $data;
+			}
+		}
 		
+				
 		if ( is_category() ) {
 			
 			$data['type']     = 'tx';
@@ -611,6 +635,30 @@ class ThzAssignWidgets{
 			}
 			
 		}
+		
+		if ( is_tag() ) {
+			
+			$data['type']     = 'is_tag';
+			$data['slug']	  = 'is_tag';
+			$data['setby']	  = 'is_tag()';
+	
+			if($data['slug'] == $assigned_page || $show_info){			
+				return $data;
+			}
+		}
+
+		if ( is_tax() ) {
+			$data['type']     ='tx';
+			$data['sub_type'] = $data['type'].'_'.get_queried_object()->taxonomy;
+			$data['id']       = get_queried_object_id();
+			$data['slug']	  = $data['sub_type'].'_'.$data['id'];
+			$data['setby']	  = 'is_tax()';
+			
+			if(in_array($data['slug'],$assigned_pages) || in_array($data['sub_type'],$assigned_pages)){			
+				return $data;
+			}
+		}
+		
 
 		if ( is_archive() && ! is_tax() ) {
 			
@@ -620,18 +668,6 @@ class ThzAssignWidgets{
 			$data['setby']	  = 'is_archive()';
 			
 			if(in_array($data['slug'],$assigned_pages)){			
-				return $data;
-			}
-		}
-		
-		if ( is_tax() ) {
-			$data['type']     ='tx';
-			$data['sub_type'] = $data['type'].'_'.get_queried_object()->taxonomy;
-			$data['id']       = get_queried_object_id();
-			$data['slug']	  = $data['sub_type'].'_'.$data['id'];
-			$data['setby']	  = 'is_tax()';
-			
-			if(in_array($data['slug'],$assigned_pages) || in_array($data['sub_type'],$assigned_pages)){			
 				return $data;
 			}
 		}
@@ -686,18 +722,6 @@ class ThzAssignWidgets{
 				}			
 				
 			}	
-		}
-				
-
-		if ( is_author() ) {
-			
-			$data['type']     = 'is_author';
-			$data['slug']	  = 'is_author';
-			$data['setby']	  = 'is_author()';
-			
-			if(in_array($data['slug'],$assigned_pages)){			
-				return $data;
-			}
 		}
 
 
