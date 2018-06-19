@@ -1,6 +1,6 @@
 # Assign Widgets
 
-## Assign Widgets WordPress Plugin in Action
+### Assign Widgets WordPress Plugin in Action
 
 - [Assign Widgets Plugin Demo Video](https://www.youtube.com/watch?v=XNNYcIZjoDY)
 - [Assigned Widgets on Creatus.io blog page](https://creatus.io/blog/)	
