@@ -1,5 +1,8 @@
 # Assign Widgets
 
+#### [Download](https://wordpress.org/plugins/assign-widgets/)
+##### Did you find this plugin helpful? Please consider leaving a [5-star review](https://wordpress.org/support/plugin/assign-widgets/reviews/).
+
 ### Assign Widgets WordPress Plugin in Action
 
 - [Assign Widgets Plugin Demo Video](https://www.youtube.com/watch?v=XNNYcIZjoDY)
