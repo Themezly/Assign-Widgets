@@ -411,9 +411,8 @@ class ThzAssignWidgets{
                     continue;
                 }
 
-
-				$opts	 = $wp_registered_widgets[$widget_id];
-				$id_base = is_array($opts['callback']) ? $opts['callback'][0]->id_base : $opts['callback'];
+				$atts	 = $wp_registered_widgets[$widget_id];
+				$id_base = is_array($atts['callback']) ? $atts['callback'][0]->id_base : $atts['callback'];
 
 				if ( !$id_base ) {
 					continue;
@@ -426,7 +425,7 @@ class ThzAssignWidgets{
 				}
 
 				if ( isset($instance['_multiwidget']) && $instance['_multiwidget'] ) {
-					$number = $opts['params'][0]['number'];
+					$number = $atts['params'][0]['number'];
 					if ( !isset($instance[$number]) ) {
 						continue;
 					}
@@ -435,7 +434,7 @@ class ThzAssignWidgets{
 					unset($number);
 				}
 
-				unset($opts);
+				unset($atts);
 				
 				$view_type		= isset($instance['view_type']) ? $instance['view_type'] : null;
 				$assigned_pages	= isset($instance['assigned_pages']) ? $instance['assigned_pages'] : null;
