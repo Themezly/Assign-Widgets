@@ -386,8 +386,11 @@ class ThzAssignWidgets{
 	}
 
 	/**
-	 *  get widgets
-	*/	
+	 * Get widgets
+	 * logic by sswells
+	 * modified by themezly
+	 * @return array
+	 */	
    public function thz_aw_sidebars_widgets( $sidebars ) { 
 	   
         if ( is_admin() ) {
