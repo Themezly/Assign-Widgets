@@ -3,7 +3,7 @@
 ### Code improvement
 
   - Adjusted code comments and spacings
-  - Used same translations formating
+  - Used same translations formatting
   - Added credits for thz_aw_sidebars_widgets logic
   
 ## Version: 1.0.3 (December 11, 2017)
