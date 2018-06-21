@@ -219,13 +219,13 @@ class ThzAssignWidgets{
 		
 		$miscellaneous = array(
 			'is_front_page' => __('Front Page', 'assign-widgets'),
-			'is_home' => __('Blog Home Page', 'assign-widgets'),
-			'is_postspage' => __('Posts page', 'assign-widgets'),
-			'is_attachment' => esc_html__('Attachment Page', 'assign-widgets'),
-			'is_search' => __('Search Page', 'assign-widgets'),
-			'is_404' => __('404 Page', 'assign-widgets'),
-			'is_author' => __('Author Archive', 'assign-widgets'),
-			'is_tag' => esc_html__('Tags Archive', 'assign-widgets'),
+			'is_home' 		=> __('Blog Home Page', 'assign-widgets'),
+			'is_postspage' 	=> __('Posts page', 'assign-widgets'),
+			'is_attachment' => __('Attachment Page', 'assign-widgets'),
+			'is_search' 	=> __('Search Page', 'assign-widgets'),
+			'is_404' 		=> __('404 Page', 'assign-widgets'),
+			'is_author' 	=> __('Author Archive', 'assign-widgets'),
+			'is_tag' 		=> __('Tags Archive', 'assign-widgets'),
 		);
 		
 		if(function_exists('bp_is_my_profile')){
