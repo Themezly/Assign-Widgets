@@ -38,8 +38,7 @@ class ThzAssignWidgets{
 
 	/**
 	 * ThzAssignWidgets scripts
-	*/
-		
+	 */
 	public function thz_aw_scripts() {
 		
 		global $pagenow;
@@ -93,8 +92,7 @@ class ThzAssignWidgets{
 
 	/**
 	 * Load languages
-	*/
-
+	 */
 	public function thz_aw_load_textdomain(){
 
 		load_plugin_textdomain( 'assign-widgets', false, dirname(plugin_basename(__FILE__)).'/languages/');
@@ -103,8 +101,7 @@ class ThzAssignWidgets{
 
 	/**
 	 * Render view
-	*/
-		
+	 */
 	public function thz_aw_in_widget_form( $instance, $empty, $options  ) {
 
 
@@ -124,7 +121,8 @@ class ThzAssignWidgets{
 	
 	/**
 	 * Update form
-	*/
+	 * @return array
+	 */
 	public function thz_aw_update_callback ( $instance, $new_instance) {
 
 		$instance['view_type'] 			= $new_instance['view_type'];
@@ -135,8 +133,9 @@ class ThzAssignWidgets{
 	
 	
 	/**
-	 *  load render
-	*/	
+	 * Load render
+	 * @return string
+	 */	
 	public function thz_aw_widgets_backend_render($file_path, $view_variables = array(), $return = true) {
 		extract($view_variables, EXTR_REFS);
 		unset($view_variables);
@@ -150,8 +149,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  list post types
-	*/	
+	 * List post types
+	 * @return array
+	 */	
 	protected function thz_list_post_types(){
 		
 		$post_types = array();
@@ -179,8 +179,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  list taxonomies
-	*/	
+	 * List taxonomies
+	 * @return array
+	 */	
 	protected function thz_list_taxonomies(){
 		
 		$taxonomies = array();
@@ -213,8 +214,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  list miscellaneous
-	*/	
+	 * List miscellaneous
+	 * @return array
+	 */	
 	protected function thz_list_miscellaneous(){
 		
 		$miscellaneous = array(
@@ -243,8 +245,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  list archives
-	*/	
+	 * List archives
+	 * @return array
+	 */	
 	protected function thz_list_archives(){
 		
 		$archives = array();
@@ -272,8 +275,9 @@ class ThzAssignWidgets{
 	}
 
 	/**
-	 *  list specific posts via ajax
-	*/		
+	 * List specific posts via ajax
+	 * @return JSON
+	 */		
 	public static function thz_aw_get_ajax_posts(){
 
 
@@ -360,12 +364,13 @@ class ThzAssignWidgets{
 	
 	
 	/**
-	 *  list users
-	*/	
+	 * List users
+	 * @return array
+	 */	
 	protected function thz_list_user_groups(){
 		
 		$usergroups = array(
-			'is_logged_in' => __('Logged in users', 'assign-widgets'),
+			'is_logged_in' 	=> __('Logged in users', 'assign-widgets'),
 			'is_logged_out' => __('Logged out users', 'assign-widgets'),
 		);
 
@@ -373,13 +378,14 @@ class ThzAssignWidgets{
 	}	
 	
 	/**
-	 *  list devices
-	*/	
+	 * List devices
+	 * @return array
+	 */	
 	protected function thz_list_devices(){
 		
 		$devices = array(
-			'is_mobile' => __('Mobile', 'assign-widgets'),
-			'is_desktop' => __('Desktop', 'assign-widgets'),
+			'is_mobile' 	=> __('Mobile', 'assign-widgets'),
+			'is_desktop' 	=> __('Desktop', 'assign-widgets'),
 		);
 
 		return $devices;
@@ -455,8 +461,9 @@ class ThzAssignWidgets{
 	
 	
 	/**
-	 *  hide/show widgets
-	*/		
+	 * Hide/show widgets
+	 * @return bool
+	 */		
 	public function thz_aw_hide_widget($view_type,$assigned_pages,$instance){
 		
 		if(empty($assigned_pages)) {
@@ -503,8 +510,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  get page info
-	*/	
+	 * Get page info
+	 * @return array
+	 */	
 	protected function thz_get_page_type_info( $assigned_pages = array() ) {
 				
 		$data =  array();
@@ -744,8 +752,9 @@ class ThzAssignWidgets{
 	
 	
 	/**
-	 *  user not loged in
-	*/	
+	 * User not loged in
+	 * @return bool
+	 */	
 	public function thz_aw_is_logged_out(){
 		
 		if(!is_user_logged_in()) {
@@ -755,8 +764,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  is desktop
-	*/	
+	 * Is desktop
+	 * @return bool
+	 */	
 	public function thz_aw_is_desktop(){
 		
 		if(!wp_is_mobile()){
@@ -766,8 +776,9 @@ class ThzAssignWidgets{
 	}
 
 	/**
-	 *  get post types for page info
-	*/		
+	 * Get post types for page info
+	 * @return bool
+	 */		
 	protected function is_thz_post_type( $post = null )	{
 		
 		if( !is_singular() ){
@@ -793,8 +804,9 @@ class ThzAssignWidgets{
 	
 	
 	/**
-	 *  generate widget area
-	*/		
+	 * Generate widget area
+	 * @return JSON
+	 */		
 	public function thz_aw_generate_sidebar(){
 		
 		
@@ -829,8 +841,9 @@ class ThzAssignWidgets{
 	}
 
 	/**
-	 *  remove widget area
-	*/		
+	 * Remove widget area
+	 * @return JSON
+	 */		
 	public function thz_aw_remove_sidebar(){
 		
 		if ( ! wp_verify_nonce( $_POST['thz_aw_nonce'], 'thz_aw_nonce' ) ) {
@@ -860,8 +873,9 @@ class ThzAssignWidgets{
 	}
 	
 	/**
-	 *  check/generate widget area suffix
-	*/	
+	 * Check/generate widget area suffix
+	 * @return string
+	 */	
 	public function thz_aw_check_suffix ($a){
 		for($i=1; $i<=count($a)+1; $i++ ){
 			if( ! array_key_exists("thz_aw_widget_area$i", $a) ){
@@ -871,8 +885,8 @@ class ThzAssignWidgets{
 	}	
 	
 	/**
-	 *  register widget areas
-	*/	
+	 * Register widget areas
+	 */	
 	public function thz_aw_register_sidebars(){
 		
 		
@@ -885,12 +899,12 @@ class ThzAssignWidgets{
 		foreach ($thz_aw_sidebars['areas'] as $id => $name){
 
 			register_sidebar(array(
-				'name' => $name,
-				'id' => $id,
+				'name' 			=> $name,
+				'id' 			=> $id,
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<div class="widget_title_holder"><h3 class="widget-title">',
-				'after_title' => '</h3></div>'
+				'after_widget' 	=> '</div>',
+				'before_title' 	=> '<div class="widget_title_holder"><h3 class="widget-title">',
+				'after_title' 	=> '</h3></div>'
 			));			
 			
 		}
