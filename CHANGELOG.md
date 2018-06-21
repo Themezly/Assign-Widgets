@@ -1,3 +1,11 @@
+## Version: 1.0.4 (June 21, 2018)
+
+### Code improvement
+
+  - Adjusted code comments and spacings
+  - Used same translations formating
+  - Added credits for thz_aw_sidebars_widgets logic
+  
 ## Version: 1.0.3 (December 11, 2017)
 
 ### Bug fixes
