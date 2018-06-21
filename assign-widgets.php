@@ -406,8 +406,6 @@ class ThzAssignWidgets{
             }
 
             foreach ( $sidebar as $w => $widget_id ) {
-                
-				
 				
                 if ( !isset($wp_registered_widgets[$widget_id]) ) {
                     continue;
