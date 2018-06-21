@@ -400,7 +400,8 @@ class ThzAssignWidgets{
         global $wp_registered_widgets;
 		
         foreach ( $sidebars as $s => $sidebar ) {
-            if ( $s == 'wp_inactive_widgets' || strpos($s, 'orphaned_widgets') === 0 || empty($sidebar) ) {
+			
+			if ( empty($sidebar) || 'wp_inactive_widgets' == $s || 0 === strpos($s, 'orphaned_widgets') ) {
                 continue;
             }
 
